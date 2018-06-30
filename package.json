@@ -1,0 +1,23 @@
+{
+  "name": "blog-api-mongoose",
+  "version": "1.0.0",
+  "description": "",
+  "main": "blogRouter.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/J-Vega/Mongoose-Blog-App.git"
+  },
+  "author": "Jonathan Vega",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/J-Vega/Mongoose-Blog-App/issues"
+  },
+  "homepage": "https://github.com/J-Vega/Mongoose-Blog-App#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
