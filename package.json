@@ -2,7 +2,8 @@
   "name": "blog-api-mongoose",
   "version": "1.0.0",
   "description": "",
-  "main": "blogRouter.js",
+  "repository":"https://github.com/J-Vega/Mongoose-Blog-App",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
