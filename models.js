@@ -1,7 +1,14 @@
 'use strict';
 
+//const uuid = require('uuid');
+
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
+
+// function StorageException(message) {
+//    this.message = message;
+//    this.name = "StorageException";
+// }
 
 const blogSchema = mongoose.Schema({
 
@@ -26,6 +33,6 @@ blogSchema.methods.serialize = function() {
 	};
 };
 
-const BlogPost = mongoose.model('Blogpost',blogSchema)
+const BlogPost = mongoose.model('BlogPost',blogSchema)
 
 module.exports = {BlogPost};
