@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
     .find()
     .then(blogPosts => {
       res.json({
-        blogPosts: blogPosts.map(
+        Answer: blogPosts.map(
           (blogPost) => blogPost.serialize())
       });
     })
