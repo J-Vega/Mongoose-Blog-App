@@ -35,7 +35,7 @@ const {BlogPost} = require('./models')
 // });
 
 
-app.get('/', (req, res) => {
+app.get('/blogPosts', (req, res) => {
   BlogPost
     .find()
     .then(blogPosts => {
