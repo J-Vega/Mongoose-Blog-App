@@ -20,7 +20,7 @@ const {BlogPost} = require('./models')
 
 //app.use(express.static("public"));
 
-app.get('/blogPosts', (req, res) => {
+app.get('/', (req, res) => {
   BlogPost
   .find()
     .then(
@@ -41,7 +41,7 @@ app.get('/blogPosts/:id', (req, res) => {
     .findById(req.params.id)
       .then(blogPost => {
         console.log(blogPost);
-        res.json(blogPost.map(post => post.serialize()));
+        res.json(post => post.serialize());
       })
       .catch(err => {
         console.error(err);
@@ -112,7 +112,7 @@ const updated = {};
   BlogPost
     .findByIdAndUpdate(req.params.id, { $set: updated }, { new: true })
     .then(updatedPost => res.status(204).json({ message: 'success' }).end())
-    .catch(err => res.status(500).json({ message: 'Something went wrong' }));
+    .catch(err => res.status(500).json({ message: 'Something went super wrong' }));
 
 });
 
