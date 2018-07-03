@@ -20,17 +20,34 @@ const {BlogPost} = require('./models')
 
 //app.use(express.static("public"));
 
+// app.get('/', (req, res) => {
+//   BlogPost
+//   .find()
+//     .then(
+//       blogPosts => {
+//         console.log(blogPosts);
+//       res.json(blogPosts.map(post => post.serialize()));
+//     })
+//     .catch(err => {
+//       console.error(err);
+//       res.status(500).json({ error: 'something went wrong' });
+//     });
+// });
+
+
 app.get('/', (req, res) => {
   BlogPost
-  .find()
-    .then(
-      blogPosts => {
-        console.log(blogPosts);
-      res.json(blogPosts.map(post => post.serialize()));
+    .find()
+    .then(blogPosts => {
+      res.json({
+        blogPosts: blogPosts.map(
+          (blogPost) => blogPost.serialize())
+      });
     })
-    .catch(err => {
-      console.error(err);
-      res.status(500).json({ error: 'something went wrong' });
+    .catch(
+      err => {
+        console.error(err);
+        res.status(500).json({message: 'Internal server error'});
     });
 });
 
