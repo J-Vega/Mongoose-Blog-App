@@ -57,8 +57,7 @@ app.get('/blogPosts/:id', (req, res) => {
   BlogPost
     .findById(req.params.id)
       .then(blogPost => {
-        console.log(blogPost);
-        res.json(post => post.serialize());
+        res.json("Blog Posts": blogPosts.map(post => post.serialize());
       })
       .catch(err => {
         console.error(err);
