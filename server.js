@@ -16,31 +16,14 @@ var bodyParser = require('body-parser');
 //const blogRouter = require("./blogRouter");
 
 const {DATABASE_URL, PORT} = require('./config');
-const {BlogPost} = require('./models')
-
-//app.use(express.static("public"));
-
-// app.get('/', (req, res) => {
-//   BlogPost
-//   .find()
-//     .then(
-//       blogPosts => {
-//         console.log(blogPosts);
-//       res.json(blogPosts.map(post => post.serialize()));
-//     })
-//     .catch(err => {
-//       console.error(err);
-//       res.status(500).json({ error: 'something went wrong' });
-//     });
-// });
-
+const {BlogPost} = require('./models');
 
 app.get('/blogPosts', (req, res) => {
   BlogPost
     .find()
     .then(blogPosts => {
       res.json({
-        Answer: blogPosts.map(
+        "Blog Posts": blogPosts.map(
           (blogPost) => blogPost.serialize())
       });
     })
@@ -57,7 +40,6 @@ app.get('/blogPosts/:id', (req, res) => {
   BlogPost
     .findById(req.params.id)
       .then(blogPost => {
-        console.log(blogPost);
         res.json(post => post.serialize());
       })
       .catch(err => {
@@ -68,14 +50,10 @@ app.get('/blogPosts/:id', (req, res) => {
 
 app.post('/blogPosts', (req, res) => {
   const requiredFields = ['title', 'content', 'author'];
-  console.log(req.body.title);
-  console.log(req.body.content);
-  console.log(req.body.author);
   //Make sure all required fields exist in body
   for (let i = 0; i < requiredFields.length; i++){
 
     const element = requiredFields[i];
-    console.log(element);
     //If any of the required elements do not exist, advise which element is missing and
     // return 400 error message
     if(!(element in req.body)){
@@ -119,13 +97,13 @@ app.put('/blogPosts/:id', (req, res) => {
   }
 
 const updated = {};
-  const updateableFields = ['title', 'content', 'author'];
+
+const updateableFields = ['title', 'content', 'author'];
   updateableFields.forEach(field => {
     if (field in req.body) {
       updated[field] = req.body[field];
     }
   });
-  //???????????????   I can't get the success message to display
   BlogPost
     .findByIdAndUpdate(req.params.id, { $set: updated }, { new: true })
     .then(updatedPost => res.status(204).json({ message: 'success' }).end())
