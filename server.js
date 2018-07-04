@@ -40,7 +40,7 @@ app.get('/blogPosts', (req, res) => {
     .find()
     .then(blogPosts => {
       res.json({
-        "Blog Posts": blogPosts.map(
+        Answer: blogPosts.map(
           (blogPost) => blogPost.serialize())
       });
     })
@@ -57,7 +57,8 @@ app.get('/blogPosts/:id', (req, res) => {
   BlogPost
     .findById(req.params.id)
       .then(blogPost => {
-        res.json("Blog Posts": blogPosts.map(post => post.serialize());
+        console.log(blogPost);
+        res.json(post => post.serialize());
       })
       .catch(err => {
         console.error(err);
