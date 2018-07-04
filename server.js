@@ -113,7 +113,7 @@ const updateableFields = ['title', 'content', 'author'];
 
 //Wildcard?
 app.use('*', function (req, res) {
-  res.status(404).json({ message: 'Not Found' });
+  res.status(404).json({ message: 'Use /blogPosts at the end of the URL to see the list of blog posts' });
 });
 
 
